@@ -11,6 +11,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
 import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
+import 'package:v_one_mshwar_app_customer/core/di/injection.dart';
 import '../service/firebase_options.dart';
 
 /// Global notification plugin instance for background handler
@@ -170,6 +171,9 @@ class AppInitializer {
   /// Initialize all app dependencies
   static Future<void> initializeApp() async {
     WidgetsFlutterBinding.ensureInitialized();
+
+    // Initialize Dependency Injection
+    await setupInjection();
 
     // Initialize Firebase
     await initializeFirebase();

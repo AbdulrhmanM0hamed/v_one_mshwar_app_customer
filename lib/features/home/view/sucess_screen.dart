@@ -1,3 +1,4 @@
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:v_one_mshwar_app_customer/common/widget/custom_text.dart';
 import 'package:v_one_mshwar_app_customer/common/widget/custom_app_bar.dart';
 import 'package:v_one_mshwar_app_customer/common/widget/button.dart';
@@ -46,10 +47,10 @@ class RideBookingSuccessScreen extends StatelessWidget {
         title: 'booking_confirmed'.tr,
         onBackPressed: () {
           // Navigate to BottomNavBar with Rides tab (index 1)
-          Get.offAll(() => BottomNavBar());
-          Future.delayed(const Duration(milliseconds: 100), () {
-            Get.find<BottomNavController>().updateIndex(1);
-          });
+          Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (_) => BottomNavBar(initialIndex: 1)),
+            (route) => false,
+          );
         },
       ),
       body: SafeArea(
@@ -311,10 +312,12 @@ class RideBookingSuccessScreen extends StatelessWidget {
                 borderRadius: 12,
                 ontap: () {
                   // Navigate to BottomNavBar with Rides tab (index 1)
-                  Get.offAll(() => BottomNavBar());
-                  Future.delayed(const Duration(milliseconds: 100), () {
-                    Get.find<BottomNavController>().updateIndex(1);
-                  });
+                  Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(
+                      builder: (_) => BottomNavBar(initialIndex: 1),
+                    ),
+                    (route) => false,
+                  );
                 },
               ),
 
@@ -335,7 +338,12 @@ class RideBookingSuccessScreen extends StatelessWidget {
                 borderWidth: 1.5,
                 ontap: () {
                   // Navigate to BottomNavBar with Home tab (index 0)
-                  Get.offAll(() => BottomNavBar());
+                  Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(
+                      builder: (_) => BottomNavBar(initialIndex: 0),
+                    ),
+                    (route) => false,
+                  );
                 },
               ),
 
